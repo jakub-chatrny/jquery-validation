@@ -333,6 +333,8 @@ $.extend( $.validator, {
 		dateISO: "Please enter a valid date ( ISO ).",
 		number: "Please enter a valid number.",
 		digits: "Please enter only digits.",
+                alphabet: "Please enter only alphabet letters",
+                lowercase: "Please enter only lowercase letters",
 		equalTo: "Please enter the same value again.",
 		maxlength: $.validator.format( "Please enter no more than {0} characters." ),
 		minlength: $.validator.format( "Please enter at least {0} characters." ),
@@ -1061,6 +1063,8 @@ $.extend( $.validator, {
 		dateISO: { dateISO: true },
 		number: { number: true },
 		digits: { digits: true },
+                alphabet: { alphabet: true },
+                lowercase: { lowercase: true },
 		creditcard: { creditcard: true }
 	},
 
@@ -1317,6 +1321,16 @@ $.extend( $.validator, {
 		// http://jqueryvalidation.org/digits-method/
 		digits: function( value, element ) {
 			return this.optional( element ) || /^\d+$/.test( value );
+		},
+
+                // http://jqueryvalidation.org/alphabet-method/
+		alphabet: function( value, element ) {
+			return this.optional( element ) || /^[a-zA-Z]+$/.test( value );
+		},
+
+                // http://jqueryvalidation.org/lowercase-method/
+		lowercase: function( value, element ) {
+			return this.optional( element ) || /^[a-z0-9_\-]+$/.test( value );
 		},
 
 		// http://jqueryvalidation.org/minlength-method/
